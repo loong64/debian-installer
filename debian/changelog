@@ -16,6 +16,9 @@ debian-installer (20150422+deb8u4+kbsd8u1) UNRELEASED; urgency=medium
   * Ensure SOURCE_DATE_EPOCH is exported throughout the build system,
     define it if unset, or fall back to 'now' if build/Makefile is
     directly invoked.
+  * On kfreebsd, use the new makefs -T parameter to clamp mfsroot
+    timestamps to a reproducible maximum value;  raise Build-Depends: on
+    makefs to version (>= 20100306-5+kbsd8u1~).
 
  -- Steven Chamberlain <steven@pyro.eu.org>  Tue, 10 Nov 2015 21:38:46 +0000
 
