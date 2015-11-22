@@ -5,10 +5,15 @@ debian-installer (20150422+deb8u4+kbsd8u1) UNRELEASED; urgency=medium
   * Slightly reduce kfreebsd-amd64 MFSROOT to 68 MiB, reducing total
     memory requirement to 160 MiB and leaving about 4 MiB safety margin.
     (Closes: #783773)
-  * Enable PROPOSED_UPDATES, since we are staging the jessie-kfreebsd
-    release there.
+  * Improve reproducibility of debian-installer netboot images
+    (Closes: #805321):
+  * Add a new utility build/util/gen-tarball to make reproducible
+    tarballs, and use it for:
+    - netboot.tar.gz
+    - debian-cd_info.tar.gz
+    - the overall debian-installer-images tar.gz file.
 
- -- Steven Chamberlain <steven@pyro.eu.org>  Sun, 26 Apr 2015 22:34:25 +0000
+ -- Steven Chamberlain <steven@pyro.eu.org>  Tue, 10 Nov 2015 21:38:46 +0000
 
 debian-installer (20150422+deb8u4) jessie; urgency=medium
 
