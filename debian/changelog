@@ -20,7 +20,7 @@ debian-installer (20150422+deb8u4+kbsd8u1) UNRELEASED; urgency=medium
     timestamps to a reproducible maximum value;  raise Build-Depends: on
     makefs to version (>= 20100306-5+kbsd8u1~).
 
- -- Steven Chamberlain <steven@pyro.eu.org>  Tue, 10 Nov 2015 21:38:46 +0000
+ -- Steven Chamberlain <stevenc@debian.org>  Mon, 10 Oct 2016 11:42:53 +0100
 
 debian-installer (20150422+deb8u4) jessie; urgency=medium
 
