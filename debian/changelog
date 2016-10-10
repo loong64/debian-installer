@@ -1,4 +1,4 @@
-debian-installer (20150422+deb8u4+kbsd8u1) UNRELEASED; urgency=medium
+debian-installer (20150422+deb8u4+kbsd8u1) jessie-kfreebsd; urgency=medium
 
   * Rebuild using udebs from the jessie-kfreebsd suite, also using
     that as /etc/default-release, as used by choose-mirror.
