@@ -1,4 +1,4 @@
-debian-installer (20150422+deb8u4+kbsd8u1) jessie-kfreebsd; urgency=medium
+debian-installer (20150422+kbsd8u2+deb8u4) jessie-kfreebsd; urgency=medium
 
   * Rebuild using udebs from the jessie-kfreebsd suite, also using
     that as /etc/default-release, as used by choose-mirror.
@@ -76,6 +76,37 @@ debian-installer (20150422+deb8u1) jessie; urgency=medium
   * Enable p-u in debian/rules for the jessie point releases.
 
  -- Cyril Brulebois <kibi@debian.org>  Thu, 04 Jun 2015 14:07:52 +0200
+
+debian-installer (20150422+kbsd8u2) jessie-kfreebsd; urgency=medium
+
+  * Improve reproducibility of debian-installer netboot images
+    (Closes: #805321):
+  * Add a new utility build/util/gen-tarball to make reproducible
+    tarballs, and use it for:
+    - netboot.tar.gz
+    - debian-cd_info.tar.gz
+    - the overall debian-installer-images tar.gz file.
+  * Inhibit gzip timestamp in initrd.gz
+  * Ensure SOURCE_DATE_EPOCH is exported throughout the build system,
+    define it if unset, or fall back to 'now' if build/Makefile is
+    directly invoked.
+  * On kfreebsd, use the new makefs -T parameter to clamp mfsroot
+    timestamps to a reproducible maximum value;  raise Build-Depends: on
+    makefs to version (>= 20100306-5+kbsd8u1~).
+
+ -- Steven Chamberlain <steven@pyro.eu.org>  Tue, 10 Nov 2015 21:38:46 +0000
+
+debian-installer (20150422+kbsd8u1) jessie-kfreebsd; urgency=medium
+
+  * Rebuild using udebs from the jessie-kfreebsd suite, also using
+    that as /etc/default-release, as used by choose-mirror.
+  * Slightly reduce kfreebsd-amd64 MFSROOT to 68 MiB, reducing total
+    memory requirement to 160 MiB and leaving about 4 MiB safety margin.
+    (Closes: #783773)
+  * Enable PROPOSED_UPDATES, since we are staging the jessie-kfreebsd
+    release there.
+
+ -- Steven Chamberlain <steven@pyro.eu.org>  Sun, 26 Apr 2015 22:34:25 +0000
 
 debian-installer (20150422) unstable; urgency=medium
 
