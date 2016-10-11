@@ -19,6 +19,7 @@ debian-installer (20150422+deb8u4+kbsd8u1) jessie-kfreebsd; urgency=medium
   * On kfreebsd, use the new makefs -T parameter to clamp mfsroot
     timestamps to a reproducible maximum value;  raise Build-Depends: on
     makefs to version (>= 20100306-5+kbsd8u1~).
+  * Load additional udebs from -proposed-updates
 
  -- Steven Chamberlain <stevenc@debian.org>  Mon, 10 Oct 2016 11:42:53 +0100
 

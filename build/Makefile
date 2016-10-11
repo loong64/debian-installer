@@ -479,6 +479,9 @@ ifndef OMIT_RELEASE_INFO
 	mkdir -p $(TREE)/etc/
 	echo $(DEBIAN_RELEASE) >$(TREE)/etc/default-release
 	echo $(USE_UDEBS_FROM) >$(TREE)/etc/udebs-source
+	if [ "$(USE_PROPOSED_UPDATES)" = 1 ]; then \
+		echo $(USE_UDEBS_FROM)-proposed-updates >>$(TREE)/etc/udebs-source; \
+	fi
 endif
 
 	# Create a dev tree.
