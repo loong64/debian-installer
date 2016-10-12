@@ -1,3 +1,11 @@
+debian-installer (20150422+kbsd8u3) UNRELEASED; urgency=medium
+
+  * Switch to dpkg-source format 3.0 (native)
+    - excludes .git/ directory from the source tarball
+    - also changes the default compression from .tar.gz to .tar.xz
+
+ -- Steven Chamberlain <stevenc@debian.org>  Fri, 21 Oct 2016 12:05:48 +0000
+
 debian-installer (20150422+kbsd8u2+deb8u4) jessie-kfreebsd; urgency=medium
 
   * Rebuild using udebs from the jessie-kfreebsd suite, also using
