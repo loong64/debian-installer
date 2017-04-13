@@ -1,4 +1,4 @@
-debian-installer (20150422+kbsd8u3) UNRELEASED; urgency=medium
+debian-installer (20150422+kbsd8u3) jessie-kfreebsd; urgency=medium
 
   * Switch to dpkg-source format 3.0 (native)
     - excludes .git/ directory from the source tarball
