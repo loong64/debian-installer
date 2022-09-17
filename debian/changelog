@@ -1,3 +1,10 @@
+debian-installer (202209XX) UNRELEASED; urgency=medium
+
+  * Revert “Minimal support for cross-building”:
+      https://lists.debian.org/debian-release/2022/09/msg00509.html
+
+ -- Cyril Brulebois <kibi@debian.org>  Sat, 17 Sep 2022 02:26:28 +0200
+
 debian-installer (20220914) unstable; urgency=medium
 
   [ Samuel Thibault ]
