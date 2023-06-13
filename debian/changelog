@@ -1,3 +1,11 @@
+debian-installer (20230607+deb12u1) UNRELEASED; urgency=medium
+
+  * Bootstrap bookworm stable branch:
+     - Set USE_PROPOSED_UPDATES=1 in debian/rules
+     - Set USE_UDEBS_FROM?=bookworm in build/config/common
+
+ -- Cyril Brulebois <kibi@debian.org>  Tue, 13 Jun 2023 19:33:02 +0200
+
 debian-installer (20230607) unstable; urgency=medium
 
   * Release early, release often!
