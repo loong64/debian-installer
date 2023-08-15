@@ -421,6 +421,8 @@ endif
 		perl -nle '$$p = $$_; $$v = <>; chomp $$v; $$a = <>; chomp $$a; <>; print "$$p $$v $$a"' | \
 		sort > $(TEMP_UDEB_LIST)
 
+	merge-usr "$(TREE)"
+
 	# Clean up after dpkg.
 	rm -rf $(DPKGDIR)/updates
 	rm -f $(DPKGDIR)/available $(DPKGDIR)/*-old $(DPKGDIR)/lock
