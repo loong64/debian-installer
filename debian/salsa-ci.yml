@@ -4,16 +4,12 @@ include:
   - https://salsa.debian.org/salsa-ci-team/pipeline/raw/master/pipeline-jobs.yml
 
 variables:
-  # this restricts the build to making a mini.iso and not much else
-  # in order to stay within salsa's artifact size limits
-  DEB_BUILD_PROFILES: salsa-ci
-
   # don't bother with irrelevant tests
   SALSA_CI_DISABLE_BUILD_PACKAGE_I386: 1
   SALSA_CI_DISABLE_BLHC: 1
   SALSA_CI_DISABLE_CROSSBUILD_ARM64: 1
 
-# In the normal pipeline, we run `build` as usual, and then provide an
+# In the normal pipeline, we run `build` as usual, and then provide a
 # `Test with openQA` job for launching some openQA tests of the mini-ISO
 # result. (on salsa, building anything more than a mini-ISO exceeds limits)
 #
@@ -50,6 +46,31 @@ variables:
      - ${WORKING_DIR}/
     reports:
       dotenv: build.env
+
+extract-source:
+  extends: .provisioning-extract-source
+  after_script:
+    - |
+      set -x
+      # Make sure that we don't exceed salsa's artifact limit when building in CI
+      cat > ${CI_PROJECT_DIR}/extsrc.env <<-EOF
+      	BUILD_TARGETS=build_netboot-gtk
+      	ADDITIONAL_BUILD_PRODUCT=miniiso
+      EOF
+
+      arch=$(dpkg-architecture -qDEB_HOST_ARCH)
+      cfg_abi=$(sed -ne 's/^LINUX_KERNEL_ABI\s*?=\s*\([0-9.-]*\)\s*$/\1/p' ${WORKING_DIR}/${SOURCE_DIR}/build/config/common)
+      # use available rather than configured ABI when things are skewed (allowing salsa builds to continue working)
+      avail_abi=$(apt-cache show linux-headers-${arch}/${RELEASE} | sed -ne 's/Depends: linux-headers-\([0-9.-]*\)-amd64.*$/\1/p')
+      if [ "${avail_abi}" != "${cfg_abi}" ]; then
+        printf "warning: Using available ABI (%s) instead of the one set in the source (%s)\n" "$avail_abi" "$cfg_abi"
+        sed -i -e "1 s/)/+ABI~${avail_abi/-/\~})/;1 a \ \n  [ Salsa-CI ]\n  * WARNING: automatically modified to use ABI = ${avail_abi}\n    This needs to be updated in the source to work for normal builds" ${WORKING_DIR}/${SOURCE_DIR}/debian/changelog
+        sed -i -E "s/^(\s*linux-image-)${cfg_abi}/\1${avail_abi}/" ${WORKING_DIR}/${SOURCE_DIR}/debian/control
+        echo "LINUX_KERNEL_ABI=${avail_abi}" >> ${CI_PROJECT_DIR}/extsrc.env
+      fi
+  artifacts:
+    reports:
+      dotenv: extsrc.env
 
 build:
   extends: .di-build-definition
