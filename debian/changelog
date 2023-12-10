@@ -10,6 +10,7 @@ debian-installer (202306XX) UNRELEASED; urgency=medium
 
   [ Holger Wansing ]
   * Update minimal RAM size value for amd64, according to lowmem value.
+  * d-i i18n guide: remove win32-loader from the manual.
 
   [ Aurelien Jarno ]
   * Build riscv64 from the official archive.
