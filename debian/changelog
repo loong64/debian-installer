@@ -5,6 +5,8 @@ debian-installer (202306XX) UNRELEASED; urgency=medium
   * Bump Linux kernel ABI to 6.6.8.
   * Bump (temporary) linux-image build-deps accordingly.
   * Makefile: unversion /boot/vmlinuz-* into /boot/vmlinuz.
+  * Makefile: adjust the drm/fb-modules workaround for now-compressed
+    modules.
 
   [ harry88@gmx.ph ]
   * Add support for Orange Pi One Plus (Closes: #980493)
