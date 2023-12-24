@@ -424,14 +424,15 @@ endif
 	merge-usr "$(TREE)"
 
 	# XXX: Compensate (at least temporarily) for kernel-image's now shipping
-	# a versioned vmlinuz-* instead of just vmlinuz (in sid, since 6.6.8-1).
-	VMLINUZ=`find $(TREE)/boot/ -name 'vmlinuz-*'`; \
-	if [ `echo "$$VMLINUZ" | wc -w` != 1 ]; then \
-		echo "E: unexpected number of vmlinuz-* in tree: $$VMLINUZ (expected: 1)" >&2; \
+	# a versioned vmlinuz-* instead of just vmlinuz (in sid, since 6.6.8-1);
+	# ditto for vmlinux-* on some archs (e.g. ppc64el).
+	VMLINUXZ=`find $(TREE)/boot/ -name 'vmlinu[xz]-*'`; \
+	if [ `echo "$$VMLINUXZ" | wc -w` != 1 ]; then \
+		echo "E: unexpected number of vmlinu[xz]-* in tree: $$VMLINUXZ (expected: 1)" >&2; \
 		exit 1; \
 	else \
-		echo "I: unversioning vmlinuz" >&2; \
-		mv -v $$VMLINUZ $(TREE)/boot/vmlinuz; \
+		echo "I: unversioning vmlinu[xz]" >&2; \
+		mv -v $$VMLINUXZ $(TREE)/boot/`basename $$VMLINUXZ|sed 's/-.*//'`; \
 	fi
 
 	# Clean up after dpkg.
