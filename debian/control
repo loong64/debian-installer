@@ -109,7 +109,8 @@ Build-Depends:
 	grub-efi-ia32-bin [hurd-i386 i386],
 	grub-efi-ia64-bin [ia64],
 	grub-efi-arm-bin [armhf],
-	grub-common [amd64 arm64 i386], xorriso,
+	grub-efi-riscv64-bin [riscv64],
+	grub-common [amd64 arm64 i386 riscv64], xorriso,
 #		Used to make EFI bootable images
 	grub-ieee1275-bin [powerpc ppc64 ppc64el sparc sparc64],
 #		IEEE1275 bootloader support.
@@ -131,7 +132,7 @@ Build-Depends:
 	tofrodos [i386 amd64 kfreebsd-i386 kfreebsd-amd64],
 #		For todos, used on files that need to be accessible from
 #		DOS.
-	mtools [i386 ia64 m68k amd64 armhf arm64 kfreebsd-i386 kfreebsd-amd64 hurd-i386],
+	mtools [i386 ia64 m68k amd64 armhf arm64 riscv64 kfreebsd-i386 kfreebsd-amd64 hurd-i386],
 #		mcopy is used to put files onto FAT filesystems w/o
 #		mounting them. Note that patches from #900409 and #900410
 #		are required for a reproducible build (available since

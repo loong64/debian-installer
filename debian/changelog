@@ -19,6 +19,7 @@ debian-installer (202306XX) UNRELEASED; urgency=medium
   * Build riscv64 from the official archive.
   * Dot not include debian-ports-archive-keyring-udeb on riscv64.
   * Add a device-tree target for riscv64.
+  * Switch the riscv64 netboot flavour to grub.efi.
 
  -- Cyril Brulebois <kibi@debian.org>  Tue, 13 Jun 2023 19:42:29 +0200
 
