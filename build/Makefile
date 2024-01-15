@@ -421,6 +421,11 @@ endif
 		perl -nle '$$p = $$_; $$v = <>; chomp $$v; $$a = <>; chomp $$a; <>; print "$$p $$v $$a"' | \
 		sort > $(TEMP_UDEB_LIST)
 
+	# Temporary: prefer kmod executables over busybox ones (#1060134).
+	for exec in depmod insmod lsmod modinfo modprobe rmmod; do \
+		rm -vf "$(TREE)/usr/bin/$$exec"; \
+	done
+
 	merge-usr "$(TREE)"
 
 	# XXX: Compensate (at least temporarily) for kernel-image's now shipping
