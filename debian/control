@@ -51,7 +51,7 @@ Build-Depends:
 	genromfs [sparc sparc64],
 #		Used for creating sparc floppies (which are not built by
 #		default.)
-	dosfstools [hurd-i386 i386 ia64 m68k amd64 armhf arm64],
+	dosfstools [hurd-i386 i386 ia64 m68k amd64 armhf arm64 riscv64],
 #		For creating FAT filesystems with mkfs.msdos.
 #		Of course i386/amd64 use this for floppies, CDs etc.
 #		m68k uses it for atari floppies
