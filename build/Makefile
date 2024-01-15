@@ -423,7 +423,7 @@ endif
 
 	# Temporary: prefer kmod executables over busybox ones (#1060134).
 	for exec in depmod insmod lsmod modinfo modprobe rmmod; do \
-		rm -vf "$(TREE)/usr/bin/$$exec"; \
+		rm -vf "$(TREE)/sbin/$$exec"; \
 	done
 
 	merge-usr "$(TREE)"
