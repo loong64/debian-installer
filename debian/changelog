@@ -24,6 +24,9 @@ debian-installer (202306XX) UNRELEASED; urgency=medium
   * Update riscv64 netboot package list.
   * Add a cdrom flavour for riscv64.
 
+  [ John Paul Adrian Glaubitz ]
+  * alpha: Remove $(KERNELVERSION) suffix from KERNELNAME
+
  -- Cyril Brulebois <kibi@debian.org>  Tue, 13 Jun 2023 19:42:29 +0200
 
 debian-installer (20230607) unstable; urgency=medium
