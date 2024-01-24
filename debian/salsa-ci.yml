@@ -179,3 +179,26 @@ reprotest:
 test-build-any:
   extends: .test-build-package-any
   allow_failure: true
+
+ABI-check:
+  stage: test
+  image: $SALSA_CI_IMAGES_BASE
+  script:
+    - |
+      if [ "$LINUX_KERNEL_ABI" ]; then
+        cat <<-EOF
+      	#######################################################################
+      	LINUX_KERNEL_ABI has been set ($LINUX_KERNEL_ABI) in the extract-source job
+      	which indicates that we had to kludge the ABI version to make the build work.
+      	.
+      	That being the case, this test will fail in order to indicate that
+      	something unusual is occuring here.
+      	#######################################################################
+      	EOF
+        exit 1
+      fi
+      echo "Normal, non-ABI-skewed build."
+  variables:
+    GIT_STRATEGY: none
+  needs:
+    - job: extract-source
