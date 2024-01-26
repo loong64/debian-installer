@@ -64,7 +64,7 @@ extract-source:
       avail_abi=$(apt-cache show linux-headers-${arch}/${RELEASE} | sed -ne 's/Depends: linux-headers-\([0-9.-]*\)-amd64.*$/\1/p')
       if [ "${avail_abi}" != "${cfg_abi}" ]; then
         printf "warning: Using available ABI (%s) instead of the one set in the source (%s)\n" "$avail_abi" "$cfg_abi"
-        sed -i -e "1 s/)/+ABI~${avail_abi/-/\~})/;1 a \ \n  [ Salsa-CI ]\n  * WARNING: automatically modified to use ABI = ${avail_abi}\n    This needs to be updated in the source to work for normal builds" ${WORKING_DIR}/${SOURCE_DIR}/debian/changelog
+        sed -i -e "1 s/)/+~ABI~${avail_abi/-/\~})/;1 a \ \n  [ Salsa-CI ]\n  * WARNING: automatically modified to use ABI = ${avail_abi}\n    This needs to be updated in the source to work for normal builds" ${WORKING_DIR}/${SOURCE_DIR}/debian/changelog
         sed -i -E "s/^(\s*linux-image-)${cfg_abi}/\1${avail_abi}/" ${WORKING_DIR}/${SOURCE_DIR}/debian/control
         echo "LINUX_KERNEL_ABI=${avail_abi}" >> ${CI_PROJECT_DIR}/extsrc.env
       fi
