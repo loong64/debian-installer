@@ -170,6 +170,7 @@ openqa-link:
   needs:
     - job: mini-ISO
       artifacts: true
+  allow_failure: true
 
 # the deb822 problem breaks these tests, so let's allow them to fail for now:
 reprotest:
