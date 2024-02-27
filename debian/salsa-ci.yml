@@ -147,7 +147,7 @@ mini-ISO:
     CLONE_NAME_SUFFIX: '$CI_PROJECT_NAMESPACE-$CI_COMMIT_REF_SLUG'
     OQA_JOBSTOCLONE: $DI_OQA_JOBSTOCLONE
   trigger:
-    project: philh/openqa-link
+    project: $GITLAB_USER_LOGIN/openqa-link
 
 Test with openQA:
   extends: .openqa-link-definition
