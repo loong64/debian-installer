@@ -32,6 +32,9 @@ debian-installer (202306XX) UNRELEASED; urgency=medium
   [ Samuel Thibault ]
   * Add hurd-amd64 support.
 
+  [ Colin Watson ]
+  * Clarify that partman-auto-recipe.txt is written using BNF.
+
  -- Cyril Brulebois <kibi@debian.org>  Tue, 13 Jun 2023 19:42:29 +0200
 
 debian-installer (20230607) unstable; urgency=medium
