@@ -164,20 +164,6 @@ define normalise_permissions
   find $(1) -not -type d -and -not -type l -print0 | xargs -0r chmod $(FILE_MODE)
 endef
 
-# Limit on mfsroot size. It is determined by NKPT (in <machine/pmap.h).
-# On amd64, it can be increased by increasing this variable.  On i386,
-# this is a hard limit due to constraints of 4 GiB VM space.
-ifeq ($(DEB_HOST_ARCH),kfreebsd-i386)
-MFSROOT_LIMIT := 42m
-else ifeq ($(DEB_HOST_ARCH),kfreebsd-amd64)
-# See Bug#783773 for derivation.
-MFSROOT_LIMIT := 78m
-endif
-
-define mkfs.ufs1
-  sh -c 'makefs -t ffs -T $(SOURCE_DATE_EPOCH) -s $(MFSROOT_LIMIT) -f 3000 -o minfree=0,version=1 $$0 ${TREE}'
-endef
-
 define e2fsck
   e2fsck -fy
 endef
@@ -793,10 +779,6 @@ endif
 	;; \
 	jffs2) \
 		$(mkjffs2) $(TEMP_INITRD); \
-	;; \
-	ufs1) \
-		$(mkfs.ufs1) $(TEMP)/initrd; \
-		$(gzip) -v9f $(TEMP)/initrd; \
 	;; \
 	*) \
 		echo "Unsupported filesystem type"; \

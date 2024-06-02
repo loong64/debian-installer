@@ -130,10 +130,10 @@ Build-Depends:
 #		U-boot binaries for armel systems
 #
 # Architecture specific build dependencies:
-	tofrodos [i386 amd64 kfreebsd-i386 kfreebsd-amd64],
+	tofrodos [i386 amd64],
 #		For todos, used on files that need to be accessible from
 #		DOS.
-	mtools [i386 ia64 m68k amd64 armhf arm64 riscv64 kfreebsd-i386 kfreebsd-amd64 hurd-i386 hurd-amd64],
+	mtools [i386 ia64 m68k amd64 armhf arm64 riscv64 hurd-i386 hurd-amd64],
 #		mcopy is used to put files onto FAT filesystems w/o
 #		mounting them. Note that patches from #900409 and #900410
 #		are required for a reproducible build (available since
@@ -149,13 +149,11 @@ Build-Depends:
 #		Used to encrypt a firmware image so an ARM based device
 #		(Thecus N2100) will accept it. Also useful on other
 #		architectures if SSL_CERTS has been set locally.
-	win32-loader (>= 0.7.2) [i386 amd64 kfreebsd-i386 kfreebsd-amd64 hurd-i386 hurd-amd64],
+	win32-loader (>= 0.7.2) [i386 amd64 hurd-i386 hurd-amd64],
 #		Alternative boot method for win32 platforms.
-	makefs (>= 20100306-5+kbsd8u1~) [kfreebsd-any],
-#		Used to create an UFS1 filesystem from a directory tree.
-	grub-pc (>= 2.02~beta2~) [kfreebsd-i386 kfreebsd-amd64 hurd-i386 hurd-amd64],
+	grub-pc (>= 2.02~beta2~) [hurd-i386 hurd-amd64],
 #		Used as the CD-ROM's bootloader
-	xorriso (>= 1.3.2-1~) [kfreebsd-i386 kfreebsd-amd64 hurd-i386 hurd-amd64],
+	xorriso (>= 1.3.2-1~) [hurd-i386 hurd-amd64],
 #               Used by grub-pc to create the CD-ROM images
 	debian-ports-archive-keyring [alpha hppa ia64 m68k powerpc powerpcspe ppc64 riscv64 sh4 sparc64 x32],
 #		Used for architectures hosted on debian-ports.org
