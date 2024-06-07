@@ -36,6 +36,9 @@ debian-installer (202306XX) UNRELEASED; urgency=medium
   [ Colin Watson ]
   * Clarify that partman-auto-recipe.txt is written using BNF.
 
+  [ Helmut Grohne ]
+  * extend merge-usr tool to cover base-files functionality
+
  -- Cyril Brulebois <kibi@debian.org>  Tue, 13 Jun 2023 19:42:29 +0200
 
 debian-installer (20230607) unstable; urgency=medium

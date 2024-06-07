@@ -39,7 +39,13 @@ move_entry() {
 
 for d in $MERGE_DIRS; do
 	test -h "$TARGET/$d" && continue
-	test -e "$TARGET/$d" || continue
-	move_entry "$d"
-	ln -s "usr/$d" "$TARGET/$d"
+	if test -e "$TARGET/$d"; then
+	       	move_entry "$d"
+	fi
+	# Create the symlink even when nothing was moved taking over the
+	# functionality of base-files providing these symlinks as there is no
+	# base-files udeb.
+	if test -e "$TARGET/usr/$d" && ! test -e "$TARGET/$d"; then
+		ln -s "usr/$d" "$TARGET/$d"
+	fi
 done
