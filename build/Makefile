@@ -414,6 +414,9 @@ endif
 		rm -vf "$(TREE)/sbin/$$exec"; \
 	done
 
+	# This is needed even when all files are moved as it also installs the
+	# aliasing symbolic links that base-files would install if there was a
+	# base-files udeb.
 	merge-usr "$(TREE)"
 
 ifeq ($(DEB_HOST_ARCH_OS),linux)
