@@ -29,6 +29,7 @@ debian-installer (202306XX) UNRELEASED; urgency=medium
   * alpha: Remove $(KERNELVERSION) suffix from KERNELNAME
   * hppa: Rewrite configuration to support sub-architectures
   * m68k: Remove $(KERNELVERSION) suffix from KERNELNAME
+  * loong64: Add support for loong64
 
   [ Samuel Thibault ]
   * Add hurd-amd64 support.
