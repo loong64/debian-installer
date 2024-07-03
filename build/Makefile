@@ -465,7 +465,7 @@ ifneq (,$(filter $(ARCH),amd64 arm64 i386))
 	if [ -e "$(DRM_DIR)/drm.ko.xz" ]; then \
 		for module in $(DRM_MODULES); do \
 			mkdir -p $(TREE)$(DRM_DIR)/$$(dirname $$module); \
-			cp $(DRM_DIR)/$$module.xz $(TREE)$(DRM_DIR)/$$module; \
+			cp $(DRM_DIR)/$$module.xz $(TREE)$(DRM_DIR)/$$module.xz; \
 		done; \
 	fi
 endif
