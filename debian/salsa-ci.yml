@@ -148,6 +148,7 @@ mini-ISO:
     # OQA_SALSA_RESULT_LINK: "$CI_API_V4_URL/projects/$CI_PROJECT_ID/statuses/$CI_COMMIT_SHA?pipeline_id=$CI_PIPELINE_ID&name=openqa&target_url=:target_url&state=:state"
     CLONE_NAME_SUFFIX: '$CI_PROJECT_NAMESPACE-$CI_COMMIT_REF_SLUG'
     OQA_JOBSTOCLONE: $DI_OQA_JOBSTOCLONE
+    OQA_CLONE_EXTRA_ARGS: $DI_OQA_CLONE_EXTRA_ARGS
   trigger:
     project: $GITLAB_USER_LOGIN/openqa-link
 
