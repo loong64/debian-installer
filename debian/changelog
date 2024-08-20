@@ -40,6 +40,12 @@ debian-installer (202306XX) UNRELEASED; urgency=medium
   [ Helmut Grohne ]
   * extend merge-usr tool to cover base-files functionality
 
+  [ Steve McIntyre ]
+  * i386 is no longer supported for Secure Boot.
+    + Disable SB in i386.cfg
+    + Remove Build-Depends on shim-signed and grub-efi-ia32-signed
+      there
+
  -- Cyril Brulebois <kibi@debian.org>  Tue, 13 Jun 2023 19:42:29 +0200
 
 debian-installer (20230607) unstable; urgency=medium
