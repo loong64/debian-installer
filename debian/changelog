@@ -4,7 +4,8 @@ debian-installer (202306XX) UNRELEASED; urgency=medium
   * Install trixie, using trixie udebs.
   * Bump Linux kernel ABI to 6.10.7 (Closes: #1071873).
   * Bump (temporary) linux-image build-deps accordingly.
-  * Makefile: unversion /boot/vmlinuz-* into /boot/vmlinuz.
+  * Makefile: unversion /boot/vmlinuz-* into /boot/vmlinuz, except on
+    mips64el (KERNELNAME lists a few version+flavour items).
   * Makefile: adjust the drm/fb-modules workaround for now-compressed
     modules.
 

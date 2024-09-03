@@ -420,9 +420,11 @@ endif
 	merge-usr "$(TREE)"
 
 ifeq ($(DEB_HOST_ARCH_OS),linux)
+ifneq ($(DEB_HOST_ARCH),mips64el)
 	# XXX: Compensate (at least temporarily) for kernel-image's now shipping
 	# a versioned vmlinuz-* instead of just vmlinuz (in sid, since 6.6.8-1);
-	# ditto for vmlinux-* on some archs (e.g. ppc64el).
+	# ditto for vmlinux-* on some archs (e.g. ppc64el). Keep it on mips64el
+	# though (see KERNELNAME variable).
 	VMLINUXZ=`find $(TREE)/boot/ -name 'vmlinu[xz]-*'`; \
 	if [ `echo "$$VMLINUXZ" | wc -w` != 1 ]; then \
 		echo "E: unexpected number of vmlinu[xz]-* in tree: $$VMLINUXZ (expected: 1)" >&2; \
@@ -431,6 +433,7 @@ ifeq ($(DEB_HOST_ARCH_OS),linux)
 		echo "I: unversioning vmlinu[xz]" >&2; \
 		mv -v $$VMLINUXZ $(TREE)/boot/`basename $$VMLINUXZ|sed 's/-.*//'`; \
 	fi
+endif
 endif
 
 	# Clean up after dpkg.
