@@ -1,7 +1,12 @@
 debian-installer (202409XX) UNRELEASED; urgency=medium
 
+  [ Cyril Brulebois ]
   * Bump Linux kernel ABI to 6.10.11.
   * Bump (temporary) linux-image build-deps accordingly.
+
+  [ Aurelien Jarno ]
+  * Add riscv64 to RELEASE_ARCHES in order to use udebs from testing. Do not
+    force DEBIAN_RELEASE to unstable.
 
  -- Cyril Brulebois <kibi@debian.org>  Mon, 23 Sep 2024 16:38:37 +0200
 
