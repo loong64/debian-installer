@@ -822,6 +822,9 @@ $(KERNEL): $(realpath $(dir $(KERNEL))/$(SYMLINK_KERNEL))
 	update-manifest $@ $(MANIFEST-KERNEL)
 endif
 
+$(TEMP_DTBS):
+	mkdir -p $(TEMP_DTBS)
+
 $(DTBS): $(TEMP_KERNEL)
 	mkdir -p $(SOME_DEST)/$(EXTRANAME)
 	set -ex ; for dtb in $$(find $(TEMP_DTBS)/ -name *.dtb) ; do \

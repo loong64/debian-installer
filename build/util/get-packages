@@ -175,7 +175,7 @@ fi
 
 # Version check only, no fetching.
 if [ -n "$CHECKMINVER" ]; then
-	version=$(apt-cache show $PACKAGES | awk '/^Version:/ { print $2}')
+	version=$(apt-cache show $PACKAGES | awk '/^Version:/ { print $2}' | head -n 1)
 	if ! dpkg --compare-versions $version '>=' $CHECKMINVER; then
 		echo "E: Minimal version requirement not satisfied for $PACKAGES: $version >= $CHECKMINVER"
 		exit 1
